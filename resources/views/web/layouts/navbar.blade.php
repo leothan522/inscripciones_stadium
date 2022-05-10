@@ -20,6 +20,12 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link">Planilla de Inscripción</a>
                 </li>
+                @if(auth()->user()->role >= 1)
+                   <li class="nav-item">
+                        <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
+                    </li>
+                @endif
+
                 {{-- <li class="nav-item dropdown">
                      <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>
                      <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">

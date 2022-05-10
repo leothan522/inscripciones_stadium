@@ -31,8 +31,9 @@
                 <hr>
                 @endif
 
-                @include('dashboard.administracion.eventos.form')
-
+                    @if(leerJson(Auth::user()->permisos, 'eventos.create') || Auth::user()->role == 1 || Auth::user()->role == 100)
+                        @include('dashboard.administracion.eventos.form')
+                    @endif
 
 
             </div>

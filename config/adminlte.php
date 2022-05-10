@@ -246,7 +246,7 @@ return [
         [
             'text'      => 'Administración',
             'icon'      => 'fas fa-fw fa-address-book',
-            'can'       => 'eventos',
+            'can'       => 'administracion',
             'submenu' => [
                 [
                     'text' => 'Eventos',
@@ -258,7 +258,7 @@ return [
                     'text' => 'Inscritos',
                     'icon' => 'fas fa-fw fa-running',
                     'route' => 'administracion.inscritos',
-                    'can' => 'parametros',
+                    'can' => 'inscritos',
                 ]
             ],
         ],
@@ -281,6 +281,11 @@ return [
                     'can' => 'parametros',
                 ]
             ],
+        ],
+        /*['header' => ''],*/
+        [
+            'text' => 'Ir a Web',
+            'url'  => '/',
         ],
 
 

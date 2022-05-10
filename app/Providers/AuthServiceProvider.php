@@ -27,14 +27,24 @@ class AuthServiceProvider extends ServiceProvider
 
         //Muetra en el sidebar los botones segun el permiso
 
-        Gate::define('usuarios', function ($user){
-            return leerJson(auth()->user()->permisos, 'usuarios.index') == true || auth()->user()->role == 1 || auth()->user()->role == 100;
-        });
-
-        Gate::define('eventos', function ($user){
+        Gate::define('administracion', function ($user){
             return leerJson(auth()->user()->permisos, 'administracion.eventos') == true ||
                     leerJson(auth()->user()->permisos, 'administracion.inscritos') == true
                     || auth()->user()->role == 1 || auth()->user()->role == 100;
+        });
+
+        Gate::define('eventos', function ($user){
+            return leerJson(auth()->user()->permisos, 'administracion.eventos') == true
+                || auth()->user()->role == 1 || auth()->user()->role == 100;
+        });
+
+        Gate::define('inscritos', function ($user){
+            return leerJson(auth()->user()->permisos, 'administracion.inscritos') == true
+                || auth()->user()->role == 1 || auth()->user()->role == 100;
+        });
+
+        Gate::define('usuarios', function ($user){
+            return leerJson(auth()->user()->permisos, 'usuarios.index') == true || auth()->user()->role == 1 || auth()->user()->role == 100;
         });
 
         Gate::define('parametros', function ($user){

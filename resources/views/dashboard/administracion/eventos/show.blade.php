@@ -39,9 +39,11 @@
                             </p>
 
                             {{--<a href="#" class="card-link">Agregar Modalidad</a>--}}
+                            @if(leerJson(Auth::user()->permisos, 'eventos.create') || Auth::user()->role == 1 || Auth::user()->role == 100)
                             <button class="btn btn-link card-link" wire:click="limpiarModalidad" data-toggle="modal" data-target="#modal-lg-modalidades">
                                 Agregar Modalidad
                             </button>
+                            @endif
 
                         </div>
                     </div><!-- /.card -->
@@ -74,12 +76,11 @@
             <div class="row justify-content-end">
                 <div class="col-md-4">
                     <div class="form-group text-right">
+                        @if(leerJson(Auth::user()->permisos, 'eventos.destroy') || Auth::user()->role == 1 || Auth::user()->role == 100)
                         <button type="button" class="btn btn-danger" wire:click="destroy({{ $evento_id }})">
                             <i class="fas fa-trash-alt"></i>
                         </button>
-                        {{--<button type="button" class="btn btn-primary @if($rol_id == null) d-none @endif" wire:click="actualRol()">
-                            --}}{{--<i class="fas fa-level-up"></i>--}}{{-- Actualizar Usuarios
-                        </button>--}}
+                        @endif
                         <button type="button" class="btn btn-default" wire:click="limpiar()">
                             <i class="fas fa-times"></i> Cerrar
                         </button>
