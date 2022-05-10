@@ -31,6 +31,12 @@ class AuthServiceProvider extends ServiceProvider
             return leerJson(auth()->user()->permisos, 'usuarios.index') == true || auth()->user()->role == 1 || auth()->user()->role == 100;
         });
 
+        Gate::define('eventos', function ($user){
+            return leerJson(auth()->user()->permisos, 'administracion.eventos') == true ||
+                    leerJson(auth()->user()->permisos, 'administracion.inscritos') == true
+                    || auth()->user()->role == 1 || auth()->user()->role == 100;
+        });
+
         Gate::define('parametros', function ($user){
             return $user->role == 100;
         });

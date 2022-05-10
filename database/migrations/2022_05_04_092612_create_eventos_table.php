@@ -17,9 +17,12 @@ class CreateEventosTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->date('fecha');
+            $table->time('hora');
             $table->string('lugar');
             $table->date('apertura');
+            $table->time('h_apertura');
             $table->date('cierre');
+            $table->time('h_cierre');
             $table->integer('estatus')->default(1);
             $table->timestamps();
         });

@@ -244,6 +244,26 @@ return [
         // Sidebar items:
 
         [
+            'text'      => 'Administración',
+            'icon'      => 'fas fa-fw fa-address-book',
+            'can'       => 'eventos',
+            'submenu' => [
+                [
+                    'text' => 'Eventos',
+                    'icon' => 'fas fa-fw fa-calendar-alt',
+                    'route'  => 'administracion.eventos',
+                    'can'  => 'eventos',
+                ],
+                [
+                    'text' => 'Inscritos',
+                    'icon' => 'fas fa-fw fa-running',
+                    'route' => 'administracion.inscritos',
+                    'can' => 'parametros',
+                ]
+            ],
+        ],
+
+        [
             'text'      => 'Configuración',
             'icon'      => 'fas fa-fw fa-cogs',
             'can'       => 'usuarios',
@@ -453,6 +473,26 @@ return [
                     'asset' => true,
                     //'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
                     'location' => 'vendor/pace-progress/pace.min.js'
+                ],
+            ],
+        ],
+        'tempusdominusBootstrap4' => [
+            'active' => false,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/moment/moment-with-locales.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css',
                 ],
             ],
         ],

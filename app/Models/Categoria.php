@@ -11,8 +11,9 @@ class Categoria extends Model
 
     protected $table = "categorias";
     protected $fillable = [
+        'nombre',
         'eventos_id',
-        'nombre'
+        'modalidades_id'
     ];
 
     public function evento()

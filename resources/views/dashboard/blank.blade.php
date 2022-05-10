@@ -9,6 +9,22 @@
     <h1>Dashboard</h1>
 @endsection
 
+@section('content_header')
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0 text-dark">Usuarios</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    {{--<li class="breadcrumb-item"><a href="#">Home</a></li>--}}
+                    <li class="breadcrumb-item active">Usuarios Registrados</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div>
+@endsection
+
 @section('content')
     <p>Welcome to this beautiful admin panel.</p>
 @endsection

@@ -102,6 +102,11 @@ function fecha($fecha, $format = null){
     return $carbon->parse($fecha)->format($format);
 }
 
+function hora($hora){
+    $carbon = Carbon::createFromTimeString($hora);
+    return $carbon->isoFormat('hh:mm A');
+}
+
 function cuantosDias($fecha_inicio, $fecha_final){
 
     if ($fecha_inicio == null){

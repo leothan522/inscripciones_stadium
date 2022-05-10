@@ -17,8 +17,10 @@ class CreateCategoriasTable extends Migration
             $table->id();
             $table->string('nombre');
             $table->bigInteger('eventos_id')->unsigned();
+            $table->bigInteger('modalidades_id')->unsigned();
             $table->timestamps();
             $table->foreign('eventos_id')->references('id')->on('eventos')->cascadeOnDelete();
+            $table->foreign('modalidades_id')->references('id')->on('modalidades')->cascadeOnDelete();
         });
     }
 

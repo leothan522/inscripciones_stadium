@@ -10,13 +10,21 @@ class Evento extends Model
     use HasFactory;
     protected $table = "eventos";
     protected $fillable = [
-        'fecha',
         'nombre',
+        'fecha',
+        'hora',
         'lugar',
         'apertura',
+        'h_apertura',
         'cierre',
+        'h_cierre',
         'estatus'
     ];
+
+    public function modalidades()
+    {
+        return $this->hasMany(Modalidad::class, 'eventos_id', 'id');
+    }
 
     public function categorias()
     {
