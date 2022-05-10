@@ -282,7 +282,7 @@ return [
                 ]
             ],
         ],
-        /*['header' => ''],*/
+        ['header' => ''],
         [
             'text' => 'Ir a Web',
             'url'  => '/',
