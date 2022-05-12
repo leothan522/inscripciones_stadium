@@ -4,6 +4,6 @@
 <strong>&copy; 2022 | {{ config('app.name') }}
     | Ing. Yonathan Castillo.
 </strong>
-<em class="text-sm">
+{{--<em class="text-sm">
     Basado en <a href="http://adminlte.io" target="_blank">AdminLTE.io</a>.
-</em>
+</em>--}}

@@ -27,8 +27,7 @@ class CreateAtletasTable extends Migration
             $table->string('telefono_celular');
             $table->bigInteger('clubes_id')->unsigned()->nullable();
             $table->string('talla_franela');
-            $table->string('path_foto');
-            $table->string('file_foto');
+            $table->string('path_foto')->nullable();
             $table->string('direccion')->nullable();
             $table->string('telefono_residencia')->nullable();
             $table->string('grupo_sanguineo')->nullable();

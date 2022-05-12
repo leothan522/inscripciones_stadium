@@ -25,7 +25,6 @@ class Atleta extends Model
         'clubes_id',
         'talla_franela',
         'path_foto',
-        'file_foto',
         'direccion',
         'telefono_residencia',
         'grupo_sanguineo',

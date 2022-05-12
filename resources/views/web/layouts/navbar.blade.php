@@ -13,16 +13,33 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 @auth
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Administrador Personal</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Planilla de Inscripción</a>
-                </li>
+                    @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'welcome')
+                            <li class="nav-item">
+                                {{--<a href="#" class="nav-link">Administrador Personal</a>--}}
+                                <button class="btn nav-link" data-toggle="modal" data-target="#modal-lg-administrador">
+                                    Administrador Personal
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                {{--<a href="#" class="nav-link">Planilla de Inscripción</a>--}}
+                                <button class="btn nav-link" data-toggle="modal" data-target="#modal-lg-planilla">
+                                    Planilla de Inscripción
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                {{--<a href="#" class="nav-link">Planilla de Inscripción</a>--}}
+                                <button class="btn nav-link" data-toggle="modal" data-target="#modal-lg-foto">
+                                    Foto
+                                </button>
+                            </li>
+                        @else
+                        <li class="nav-item">
+                            <a href="{{ route('welcome') }}" class="btn nav-link">Eventos</a>
+                        </li>
+                    @endif
                 @if(auth()->user()->role >= 1)
                    <li class="nav-item">
-                        <a href="{{ route('dashboard') }}" class="nav-link">Dashboard</a>
+                        <a href="{{ route('dashboard') }}" class="btn nav-link">Dashboard</a>
                     </li>
                 @endif
 
