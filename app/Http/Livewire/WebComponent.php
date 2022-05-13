@@ -348,7 +348,7 @@ class WebComponent extends Component
         'banco'         =>      'required',
         'tipoPago'      =>      'required',
         'fechaPago'     =>      'required',
-        'comprobante'   =>      'required|numeric|digits_between:6,8|integer',
+        'comprobante'   =>      'required|regex:/[0-9]/|digits_between:6,8',
         'monto'         =>      'required|numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/',
         'categoriasAtleta' =>   'required'
     ];
@@ -393,6 +393,10 @@ class WebComponent extends Component
         $pago->eventos_id = $this->evento_id;
         $pago->atletas_id = $this->atleta_id;
         $pago->save();
+
+        $this->participante_id = $participante->id;
+        $this->pago_id = $pago->id;
+        $this->estatusPago = 0;
 
         $this->alert(
             'success',

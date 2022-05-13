@@ -88,7 +88,7 @@
                                       <input type="checkbox" @if(leerJson($categoriasAtleta, $categoria->id)) checked @endif wire:click="categoriasParticipante({{ $categoria->id }})">
                                     </span>
                                 </div>
-                                <label class="form-control">{{ $categoria->nombre }}</label>
+                                <label class="form-control text-xs">{{ $categoria->nombre }}</label>
                             </div>
                             {{--<div class="form-check">
                                 <input class="form-check-input" type="checkbox">

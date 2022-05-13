@@ -90,7 +90,7 @@ class EventosComponent extends Component
 
         $this->alert(
             'success',
-            "hola"
+            "Datos Guardados"
         );
     }
 
