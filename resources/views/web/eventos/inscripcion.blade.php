@@ -12,6 +12,7 @@
         </div><!-- /.card -->
 
         @if($participante_id && $pago_id)
+            <h5 class="col-md-12 text-bold">ID: {{ cerosIzquierda($participante_id, 5) }}</h5>
             @if($estatusPago == 0)
                 <div class="alert alert-warning">
                     <i class="icon fas fa-exclamation-triangle"></i> Esperando la confirmacion del Pago.

@@ -28,6 +28,7 @@ class WebComponent extends Component
     public $viewInscripcion = 'inscripcion', $evento_id, $nombreEvento, $fechaEvento, $horaVento, $horaEvento, $lugarEvento,
         $listaModalidades = [], $modalidad, $categorias, $categoriasAtleta;
     public $banco, $tipoPago, $fechaPago, $comprobante, $monto, $estatusPago, $participante_id, $pago_id;
+    public $administradorEventos, $administradorPlanilla = true, $administradorFoto = true;
 
     public function render()
     {
@@ -48,6 +49,7 @@ class WebComponent extends Component
         });
         $this->verPlanilla();
         $this->verFoto();
+        $this->verAdministrador();
         return view('livewire.web-component')
             ->with('eventos', $eventos);
     }
@@ -433,6 +435,27 @@ class WebComponent extends Component
             'success',
             'Datos Guardados'
         );
+    }
+
+    public function verAdministrador()
+    {
+        $atleta = Atleta::where('users_id', auth()->id())->first();
+        if ($atleta){
+
+            $this->administradorPlanilla = false;
+            if ($atleta->path_foto){
+                $this->administradorFoto = false;
+            }else{
+                $this->administradorFoto = true;
+            }
+
+            $eventos = Particiante::where('atletas_id', $atleta->id)->get();
+            $this->administradorEventos = $eventos;
+
+        }else{
+            $this->administradorPlanilla = true;
+        }
+
     }
 
 
