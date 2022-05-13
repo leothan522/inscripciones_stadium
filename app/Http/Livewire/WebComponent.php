@@ -122,7 +122,7 @@ class WebComponent extends Component
             'telefonoResidencia'    => 'nullable|regex:/[0-9]{9}/',
             'clubes'                => 'required',
             'tallaFranela'          => 'required|alpha',
-            'contactoEmergencia'    => 'nullable|alpha',
+            'contactoEmergencia'    => 'nullable',
             'telefonoEmergencia'    => 'nullable|regex:/[0-9]{9}/',
             'nombreClub'            =>  'required_if:registrarClub,true|unique:clubes,nombre',
             'alergias'              =>  'required_if:alergico,SI',
