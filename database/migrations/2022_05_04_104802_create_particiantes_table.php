@@ -13,14 +13,15 @@ class CreateParticiantesTable extends Migration
      */
     public function up()
     {
-        Schema::create('particiantes', function (Blueprint $table) {
+        Schema::create('participantes', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('eventos_id')->unsigned();
-            $table->bigInteger('categorias_id')->unsigned();
             $table->bigInteger('atletas_id')->unsigned();
+            $table->bigInteger('modalidades_id')->unsigned();
+            $table->text('categorias')->nullable();
             $table->timestamps();
             $table->foreign('eventos_id')->references('id')->on('eventos')->cascadeOnDelete();
-            $table->foreign('categorias_id')->references('id')->on('categorias')->cascadeOnDelete();
+            $table->foreign('modalidades_id')->references('id')->on('modalidades')->cascadeOnDelete();
             $table->foreign('atletas_id')->references('id')->on('atletas')->cascadeOnDelete();
         });
     }
@@ -32,6 +33,6 @@ class CreateParticiantesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('particiantes');
+        Schema::dropIfExists('participantes');
     }
 }

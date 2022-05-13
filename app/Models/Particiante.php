@@ -11,8 +11,9 @@ class Particiante extends Model
     protected $table = "participantes";
     protected $fillable =[
         'eventos_id',
-        'categorias_id',
-        'atletas_id'
+        'atletas_id',
+        'modalidades_id',
+        'categorias',
     ];
 
     public function evento()
@@ -20,9 +21,9 @@ class Particiante extends Model
         return $this->belongsTo(Evento::class, 'eventos_id', 'id');
     }
 
-    public function categoria()
+    public function modalidad()
     {
-        return $this->belongsTo(Categoria::class, 'categorias_id', 'id');
+        $this->belongsTo(Modalidad::class, 'modalidades_id', 'id');
     }
 
     public function atleta()

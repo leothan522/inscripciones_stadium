@@ -124,8 +124,10 @@ function fecha($fecha, $format = null){
 }
 
 function hora($hora){
-    $carbon = Carbon::createFromTimeString($hora);
-    return $carbon->isoFormat('hh:mm A');
+    if ($hora != null){
+        $carbon = Carbon::createFromTimeString($hora);
+        return $carbon->isoFormat('hh:mm A');
+    }
 }
 
 function cuantosDias($fecha_inicio, $fecha_final){
@@ -260,5 +262,25 @@ function iconoPlataforma($plataforma)
     } else {
         return '<i class="fas fa-mobile"></i>';
     }
+}
+
+function bancos(){
+    $bancos = [
+        'BANESCO' => 'BANESCO',
+        'VENEZUELA' => 'VENEZUELA',
+        'MERCANTIL' => 'MERCANTIL',
+    ];
+    return $bancos;
+
+}
+
+function tipoPago(){
+    $bancos = [
+        'DEPOSITO' => 'DEPOSITO',
+        'TRANSFERENCIA' => 'TRANSFERENCIA',
+        'EFECTIVO' => 'EFECTIVO',
+    ];
+    return $bancos;
+
 }
 
