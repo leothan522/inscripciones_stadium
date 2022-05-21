@@ -12,8 +12,8 @@ class AdministracionController extends Controller
         return view('dashboard.administracion.eventos');
     }
 
-    public function inscritos()
+    public function atletas()
     {
-        return view('dashboard.administracion.inscritos');
+        return view('dashboard.administracion.atletas');
     }
 }

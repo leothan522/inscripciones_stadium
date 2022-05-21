@@ -1,4 +1,4 @@
-<div class="card card-gray-dark collapsed-card">
+<div class="card card-gray-dark {{--collapsed-card--}}">
     <div class="card-header">
         <h3 class="card-title">Administración</h3>
 
@@ -37,6 +37,24 @@
                            @if(leerJson($roles_permisos, 'eventos.destroy')) checked @endif
                            class="custom-control-input" id="customSwitchRoles2Adm">
                     <label class="custom-control-label" for="customSwitchRoles2Adm"></label>
+                </div>
+            </li>
+            <li class="list-group-item">
+                Ver Atletas
+                <div class="custom-control custom-switch custom-switch-on-success float-right">
+                    <input type="checkbox" wire:click="update_roles({{ $rol_id }}, 'administracion.atletas')"
+                           @if(leerJson($roles_permisos, 'administracion.atletas')) checked @endif
+                           class="custom-control-input" id="customSwitchRoles3Atl">
+                    <label class="custom-control-label" for="customSwitchRoles3Atl"></label>
+                </div>
+            </li>
+            <li class="list-group-item">
+                [Registrar|Editar] Atletas
+                <div class="custom-control custom-switch custom-switch-on-success float-right">
+                    <input type="checkbox" wire:click="update_roles({{ $rol_id }}, 'atletas.create')"
+                           @if(leerJson($roles_permisos, 'atletas.create')) checked @endif
+                           class="custom-control-input" id="customSwitchRoles4Atl">
+                    <label class="custom-control-label" for="customSwitchRoles4Atl"></label>
                 </div>
             </li>
             {{--<li class="list-group-item">

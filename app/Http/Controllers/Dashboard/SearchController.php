@@ -33,6 +33,10 @@ class SearchController extends Controller
             return redirect()->route('parametros.index', $keyword);
         }
 
+        if (strpos($route, '/dashboard/atletas') !== false){
+            return redirect()->route('administracion.atletas', $keyword);
+        }
+
         //en caso de no encontrar ninguna ruta
         verSweetAlert2("Opcion no encontrada", 'toast');
         return back();

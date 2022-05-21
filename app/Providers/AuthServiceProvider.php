@@ -29,7 +29,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('administracion', function ($user){
             return leerJson(auth()->user()->permisos, 'administracion.eventos') == true ||
-                    leerJson(auth()->user()->permisos, 'administracion.inscritos') == true
+                    leerJson(auth()->user()->permisos, 'administracion.atletas') == true
                     || auth()->user()->role == 1 || auth()->user()->role == 100;
         });
 
@@ -38,8 +38,8 @@ class AuthServiceProvider extends ServiceProvider
                 || auth()->user()->role == 1 || auth()->user()->role == 100;
         });
 
-        Gate::define('inscritos', function ($user){
-            return leerJson(auth()->user()->permisos, 'administracion.inscritos') == true
+        Gate::define('atletas', function ($user){
+            return leerJson(auth()->user()->permisos, 'administracion.atletas') == true
                 || auth()->user()->role == 1 || auth()->user()->role == 100;
         });
 

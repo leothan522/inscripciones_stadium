@@ -39,25 +39,25 @@
                     <label class="custom-control-label" for="customSwitch2Adm"></label>
                 </div>
             </li>
-            {{--<li class="list-group-item">
-                Reestablecer Contraseña
+            <li class="list-group-item">
+                Ver Atletas
                 <div class="custom-control custom-switch custom-switch-on-success float-right">
-                    <input type="checkbox" wire:click="update_permisos({{ $user_id }}, 'usuarios.update')"
-                           @if(leerJson($user_permisos, 'usuarios.update')) checked @endif
-                           class="custom-control-input" id="customSwitch3">
-                    <label class="custom-control-label" for="customSwitch3"></label>
-                </div>
-            </li>--}}
-            {{--<li class="list-group-item">
-                Permisos de Usuario
-                <div class="custom-control custom-switch custom-switch-on-success float-right">
-                    <input type="checkbox" wire:click="update_permisos({{ $user_id }}, 'usuarios.permisos')"
-                           @if(leerJson($user_permisos, 'usuarios.permisos')) checked @endif
-                           class="custom-control-input" id="customSwitch4">
-                    <label class="custom-control-label" for="customSwitch4"></label>
+                    <input type="checkbox" wire:click="update_permisos({{ $user_id }}, 'administracion.atletas')"
+                           @if(leerJson($user_permisos, 'administracion.atletas')) checked @endif
+                           class="custom-control-input" id="customSwitch3Atl">
+                    <label class="custom-control-label" for="customSwitch3Atl"></label>
                 </div>
             </li>
             <li class="list-group-item">
+                [Registrar|Editar] Atletas
+                <div class="custom-control custom-switch custom-switch-on-success float-right">
+                    <input type="checkbox" wire:click="update_permisos({{ $user_id }}, 'atletas.create')"
+                           @if(leerJson($user_permisos, 'atletas.create')) checked @endif
+                           class="custom-control-input" id="customSwitch4Atl">
+                    <label class="custom-control-label" for="customSwitch4Atl"></label>
+                </div>
+            </li>
+            {{--<li class="list-group-item">
                 Roles de Usuarios
                 <div class="custom-control custom-switch custom-switch-on-success float-right">
                     <input type="checkbox" wire:click="update_permisos({{ $user_id }}, 'usuarios.roles')"

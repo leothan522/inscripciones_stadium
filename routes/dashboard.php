@@ -31,6 +31,6 @@ Route::middleware(['auth', 'isadmin', 'estatus', 'permisos'])->prefix('/dashboar
     Route::get('pdf/usuarios', [UsersController::class, 'createPDF'])->name('usuarios.pdf');
 
     Route::get('eventos', [AdministracionController::class, 'eventos'])->name('administracion.eventos');
-    Route::get('inscritos', [AdministracionController::class, 'inscritos'])->name('administracion.inscritos');
+    Route::get('atletas/{buscar?}', [AdministracionController::class, 'atletas'])->name('administracion.atletas');
 
 });

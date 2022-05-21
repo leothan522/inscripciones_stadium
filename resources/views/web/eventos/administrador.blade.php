@@ -44,7 +44,7 @@
                                     <small>{{ $participante->evento->lugar }}</small>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-link" wire:click="formInscripcion({{ $evento->id }})"
+                                    <button type="button" class="btn btn-link" @if($eventos->isNotEmpty()) wire:click="formInscripcion({{ $evento->id }})" @endif
                                             data-toggle="modal" data-target="#modal-lg-inscripcion">
                                         <i class="fas fa-search"></i>
                                     </button>

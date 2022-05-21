@@ -47,6 +47,8 @@ class WebComponent extends Component
             }
 
         });
+
+        //dd($eventos);
         $this->verPlanilla();
         $this->verFoto();
         $this->verAdministrador();
@@ -109,7 +111,8 @@ class WebComponent extends Component
     protected function rules()
     {
         return [
-            'cedula' => ['required', Rule::unique('atletas', 'cedula')->ignore(auth()->id(), 'users_id')],
+            'cedula' => ['required', 'numeric', 'digits_between:6,8', 'integer',
+                Rule::unique('atletas', 'cedula')->ignore(auth()->id(), 'users_id')],
             /*'cedula'                => 'required|numeric|digits_between:6,8|integer|unique:atletas,cedula',*/
             'sexo'                  => 'required',
             'fechaNac'              => 'required',

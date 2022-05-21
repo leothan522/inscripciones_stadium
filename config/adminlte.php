@@ -255,10 +255,10 @@ return [
                     'can'  => 'eventos',
                 ],
                 [
-                    'text' => 'Inscritos',
+                    'text' => 'Atletas',
                     'icon' => 'fas fa-fw fa-running',
-                    'route' => 'administracion.inscritos',
-                    'can' => 'inscritos',
+                    'route' => 'administracion.atletas',
+                    'can' => 'atletas',
                 ]
             ],
         ],

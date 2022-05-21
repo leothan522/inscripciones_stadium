@@ -56,4 +56,14 @@ class Atleta extends Model
         return $this->hasMany(Pago::class, 'atletas_id', 'id');
     }
 
+    public function scopeBuscar($query, $keyword)
+    {
+        return $query->where('cedula', 'LIKE', "%$keyword%")
+            ->orWhere('primer_nombre', 'LIKE', "%$keyword%")
+            ->orWhere('segundo_nombre', 'LIKE', "%$keyword%")
+            ->orWhere('primer_apellido', 'LIKE', "%$keyword%")
+            ->orWhere('segundo_apellido', 'LIKE', "%$keyword%")
+            ;
+    }
+
 }
