@@ -17,6 +17,9 @@
                     <div class="col-md-4">
                         @include('dashboard.usuarios.permisos.administracion')
                     </div>
+                    <div class="col-md-4">
+                        @include('dashboard.usuarios.permisos.pagos')
+                    </div>
                 </div>
 
 

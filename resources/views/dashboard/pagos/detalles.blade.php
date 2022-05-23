@@ -159,6 +159,8 @@
             </div>
         </div>
 
+        @if(leerJson(Auth::user()->permisos, 'pagos.validar') || Auth::user()->role == 1 || Auth::user()->role == 100)
+
         <div class="form-group text-right">
             @if($estatusPago == 0)
                 <button class="btn btn-danger" wire:click="validarPago({{ $pago_id }}, {{ 2 }})"><i class="fa fa-ban"></i> Pago NO Verificado</button>
@@ -168,6 +170,7 @@
             @endif
         </div>
 
+        @endif
     </div>
 
 </div>

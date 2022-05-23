@@ -15,6 +15,7 @@
                     </div>
                 </div>
 
+
                 @include('dashboard.pagos.detalles')
 
 
