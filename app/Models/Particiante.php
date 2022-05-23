@@ -13,6 +13,7 @@ class Particiante extends Model
         'eventos_id',
         'atletas_id',
         'modalidades_id',
+        'pagos_id',
         'categorias',
     ];
 
@@ -29,6 +30,11 @@ class Particiante extends Model
     public function atleta()
     {
         return $this->belongsTo(Atleta::class, 'atletas_id', 'id');
+    }
+
+    public  function pago()
+    {
+        return $this->hasMany(Pago::class, 'pagos_id', 'id');
     }
 
 }

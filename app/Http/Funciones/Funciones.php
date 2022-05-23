@@ -290,6 +290,14 @@ function tipoPago(){
         'EFECTIVO' => 'EFECTIVO',
     ];
     return $bancos;
+}
 
+function estatusPagos($estatus){
+    $status = [
+        '2' => '<i class="fa fa-ban text-danger"></i>',
+        '1' => '<i class="fa fa-check-circle text-success"></i>',
+        '0' => '<i class="icon fas fa-exclamation-triangle text-warning"></i>'
+    ];
+    return $status[$estatus];
 }
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\AdministracionController;
+use App\Http\Controllers\Dashboard\PagosController;
 use App\Http\Controllers\Dashboard\ParametrosController;
 use App\Http\Controllers\Dashboard\SearchController;
 use App\Http\Controllers\Dashboard\UsersController;
@@ -32,5 +33,6 @@ Route::middleware(['auth', 'isadmin', 'estatus', 'permisos'])->prefix('/dashboar
 
     Route::get('eventos', [AdministracionController::class, 'eventos'])->name('administracion.eventos');
     Route::get('atletas/{buscar?}', [AdministracionController::class, 'atletas'])->name('administracion.atletas');
+    Route::get('pagos', [PagosController::class, 'index'])->name('pagos.index');
 
 });

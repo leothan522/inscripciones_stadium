@@ -244,6 +244,12 @@ return [
         // Sidebar items:
 
         [
+            'text' => 'Validar pagos',
+            'icon' => 'fas fa-fw fa-money-bill-wave',
+            'route' => 'pagos.index',
+            'can' => 'pagos',
+        ],
+        [
             'text'      => 'Administración',
             'icon'      => 'fas fa-fw fa-address-book',
             'can'       => 'administracion',
