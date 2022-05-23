@@ -244,6 +244,12 @@ return [
         // Sidebar items:
 
         [
+            'text' => 'Participantes',
+            'icon' => 'fas fa-fw fa-users',
+            'route' => 'participantes.index',
+            'can' => 'participantes',
+        ],
+        [
             'text' => 'Validar pagos',
             'icon' => 'fas fa-fw fa-money-bill-wave',
             'route' => 'pagos.index',
