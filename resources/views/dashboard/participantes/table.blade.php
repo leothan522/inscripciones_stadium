@@ -15,7 +15,7 @@
         <tbody>
         @if(!$listaAtletas->isEmpty())
             @foreach($listaAtletas as $participante)
-                <th scope="row" class="text-center">{{ $participante->atleta->id }}</th>
+                <th scope="row" class="text-center">{{ cerosIzquierda($participante->id, 5) }}</th>
                 <td>{{ $participante->atleta->cedula }}</td>
                 <td>{{ strtoupper($participante->atleta->primer_nombre." ".$participante->atleta->segundo_nombre." ".$participante->atleta->primer_apellido." ".$participante->atleta->segundo_apellido) }}</td>
                 <td class="text-center">{{ $participante->atleta->sexo }}</td>
@@ -24,7 +24,7 @@
                 <td class="text-center">{!! estatusPagos($participante->estatus) !!}</td>
                 <td class="justify-content-end">
                     <div class="btn-group">
-                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-lg-atleta" wire:click="verParticipante({{ $participante->atletas_id }},{{ $participante->pagos_id }})">
+                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-lg-atleta" wire:click="verParticipante({{ $participante->atletas_id }},{{ $participante->pagos_id }}, {{ $participante->id }})">
                             <i class="fas fa-info-circle"></i>
                         </button>
 

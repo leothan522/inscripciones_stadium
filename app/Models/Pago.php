@@ -35,4 +35,12 @@ class Pago extends Model
         return $this->belongsTo(Particiante::class, 'participantes_id', 'id');
     }
 
+    public function scopeBuscar($query, $keyword)
+    {
+        return $query->where('comprobante', 'LIKE', "%$keyword%")
+            ->orWhere('monto', 'LIKE', "%$keyword%")
+            ->orWhere('participantes_id', 'LIKE', "%$keyword%")
+            ;
+    }
+
 }

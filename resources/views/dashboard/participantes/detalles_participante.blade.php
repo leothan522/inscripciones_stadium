@@ -31,3 +31,20 @@
 
     </div>
 </div><!-- /.card -->
+
+<h5 class="col-md-12 text-bold">ID: {{ cerosIzquierda($participante_id, 5) }}</h5>
+@if($estatusPago == 0)
+    <div class="alert alert-warning">
+        <i class="icon fas fa-exclamation-triangle"></i> Esperando la confirmacion del Pago.
+    </div>
+@else
+    @if($estatusPago == 1)
+        <div class="alert alert-success">
+            <i class="icon fas fa-check"></i> Pago Validado.
+        </div>
+    @else
+        <div class="alert alert-danger">
+            <i class="icon fas fa-ban"></i> Pago NO Verificado.
+        </div>
+    @endif
+@endif

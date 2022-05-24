@@ -18,7 +18,8 @@ class ParticipantesComponent extends Component
         $categoriasAtleta, $banco, $tipo, $fechaPago, $comprobante, $monto, $modalidad;
     public $nombre, $fecha, $hora, $lugar, $apertura, $h_apertura, $cierre, $h_cierre;
     public $listaAtletas;
-    public $cedulaAtleta, $nombreAtleta, $celularAtleta, $correoAtleta, $clubAtleta, $paisAtleta, $sexoAtleta, $path, $edad;
+    public $cedulaAtleta, $nombreAtleta, $celularAtleta, $correoAtleta, $clubAtleta, $paisAtleta, $sexoAtleta, $path,
+                $edad, $fechaAtleta, $segundoNombre, $segundoApellido, $tallaAtleta, $participante_id;
 
     public function render()
     {
@@ -69,7 +70,7 @@ class ParticipantesComponent extends Component
         $this->view = 'create';
     }
 
-    public function verParticipante($idAtleta, $idPago)
+    public function verParticipante($idAtleta, $idPago, $idParticipante)
     {
         $pago = Pago::find($idPago);
         $categorias = Categoria::where('eventos_id', $pago->evento->id)->where('modalidades_id', $pago->participante->modalidades_id)->get();
@@ -83,15 +84,22 @@ class ParticipantesComponent extends Component
         $this->comprobante = $pago->comprobante;
         $this->monto = $pago->monto;
         $this->pago_id = $pago->id;
+        $this->estatusPago = $pago->estatus;
 
         $atleta = Atleta::find($idAtleta);
-        $this->nombreAtleta = strtoupper($atleta->primer_nombre." ".$atleta->segundo_nombre." ".$atleta->primer_apellido." ".$atleta->segundo_apellido);
+        $this->nombreAtleta = strtoupper($atleta->primer_nombre." ".$atleta->primer_apellido);
+        $this->segundoNombre = strtoupper($atleta->segundo_nombre);
+        $this->segundoApellido = strtoupper($atleta->segundo_apellido);
         $this->cedulaAtleta = $atleta->cedula;
+        $this->fechaAtleta = $atleta->fecha_nac;
         $this->edad = calcularEdad($atleta->fecha_nac);
         $this->sexoAtleta = $atleta->sexo;
         $this->celularAtleta = $atleta->telefono_celular;
         $this->clubAtleta = $atleta->club->nombre;
         $this->paisAtleta = paises($atleta->pais);
+        $this->tallaAtleta = $atleta->talla_franela;
+
+        $this->participante_id = $idParticipante;
 
         $this->verFoto($idAtleta);
         $this->updatedselect();

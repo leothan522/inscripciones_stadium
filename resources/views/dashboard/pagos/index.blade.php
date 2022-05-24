@@ -22,6 +22,13 @@
                             <li><a href="#" class="dropdown-item">NO Verificados</a></li>
                         </ul>
                     </li>--}}
+                    @if($busqueda)
+
+                        <a href="{{ route('pagos.index') }}"
+                           class="btn btn-tool btn-outline-primary text-danger" {{--target="_blank"--}}>
+                            <i class="fas fa-list"></i> Ver Todos
+                        </a>
+                    @endif
                     <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i>
                     </button>
                 </div>

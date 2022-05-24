@@ -86,7 +86,8 @@ class User extends Authenticatable
 
     public function scopeBuscar($query, $keyword)
     {
-        return $query->where('name', 'LIKE', "%$keyword%");
+        return $query->where('name', 'LIKE', "%$keyword%")
+            ->orWhere('email', 'LIKE', "%$keyword%");
     }
 
     public function atleta()

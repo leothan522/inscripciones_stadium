@@ -13,34 +13,62 @@
     <div class="card-footer p-0">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <span class="nav-link">
+                    Sexo
+                    <span class="float-right text-bold">{{ $sexoAtleta }}</span>
+                </span>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link">
+                     F. Nacimiento
+                    <span class="float-right text-bold">{{ $fechaAtleta }}</span>
+                </span>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link">
                     Edad
                     <span class="float-right badge bg-primary">{{ $edad }}</span>
-                </a>
+                </span>
             </li>
+            @if($segundoNombre)
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    Sexo
-                    <span class="float-right ">{{ $sexoAtleta }}</span>
-                </a>
+                <span class="nav-link">
+                    Segundo Nombre
+                    <span class="float-right text-bold">{{ $segundoNombre }}</span>
+                </span>
             </li>
+            @endif
+            @if($segundoApellido)
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    Celular
-                    <span class="float-right ">{{ $celularAtleta }}</span>
-                </a>
+                <span class="nav-link">
+                    Segundo Apellido
+                    <span class="float-right text-bold">{{ $segundoApellido }}</span>
+                </span>
             </li>
+            @endif
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    Club
-                    <span class="float-right ">{{ $clubAtleta }}</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
+                <span class="nav-link">
                     Pais
-                    <span class="float-right ">{{ $paisAtleta }}</span>
-                </a>
+                    <span class="float-right text-bold">{{ $paisAtleta }}</span>
+                </span>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link">
+                    Celular
+                    <span class="float-right text-bold">{{ $celularAtleta }}</span>
+                </span>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link">
+                    Club
+                    <span class="float-right text-bold">{{ $clubAtleta }}</span>
+                </span>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link">
+                    Talla Franela
+                    <span class="float-right text-bold">{{ $tallaAtleta }}</span>
+                </span>
             </li>
         </ul>
     </div>

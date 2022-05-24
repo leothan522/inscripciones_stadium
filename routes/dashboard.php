@@ -35,7 +35,7 @@ Route::middleware(['auth', 'isadmin', 'estatus', 'permisos'])->prefix('/dashboar
     Route::get('eventos', [AdministracionController::class, 'eventos'])->name('administracion.eventos');
     Route::get('atletas/{buscar?}', [AdministracionController::class, 'atletas'])->name('administracion.atletas');
 
-    Route::get('pagos', [PagosController::class, 'index'])->name('pagos.index');
+    Route::get('pagos/{buscar?}', [PagosController::class, 'index'])->name('pagos.index');
     Route::get('participantes', [ParticipantesController::class, 'index'])->name('participantes.index');
 
 });

@@ -6,6 +6,7 @@ use App\Models\Categoria;
 use App\Models\Modalidad;
 use App\Models\Pago;
 use App\Models\Particiante;
+use Illuminate\Http\Request;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -15,10 +16,18 @@ class PagosComponent extends Component
     use LivewireAlert;
     use WithPagination;
 
-    public $listaPagos = [];
+    public $listaPagos = [], $busqueda;
     public $nombreEvento, $lugarEvento, $fechaEvento, $horaEvento, $participante_id, $pago_id, $estatusPago, $categorias,
         $categoriasAtleta, $banco, $tipo, $fecha, $comprobante, $monto, $modalidad;
     public $cedula, $primerNombre, $segundoNombre, $primerApellido, $segundoApellido, $sexo, $fechaNac, $nombreClub;
+
+
+    public function mount(Request $request)
+    {
+        if (!is_null($request->buscar)){
+            $this->busqueda = $request->buscar;
+        }
+    }
 
     public function render()
     {
@@ -29,9 +38,9 @@ class PagosComponent extends Component
     public function listarPagos($estatus = null)
     {
         if (!is_null($estatus)){
-            $pagos = Pago::where('estatus', $estatus)->orderBy('fecha', 'ASC')->get();
+            $pagos = Pago::buscar($this->busqueda)->where('estatus', $estatus)->orderBy('fecha', 'ASC')->get();
         }else{
-            $pagos = Pago::orderBy('fecha', 'DESC')->get();
+            $pagos = Pago::buscar($this->busqueda)->orderBy('fecha', 'DESC')->get();
         }
 
         $this->listaPagos = $pagos;

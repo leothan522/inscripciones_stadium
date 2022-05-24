@@ -2,6 +2,7 @@
     <table class="table table-hover bg-light">
         <thead class="thead-dark">
         <tr>
+            <th scope="col" class="text-center">Participante</th>
             <th scope="col">Banco</th>
             <th scope="col">Tipo Pago</th>
             <th scope="col" class="text-center">Fecha Pago</th>
@@ -14,10 +15,11 @@
         <tbody>
         @if(!$listaPagos->isEmpty())
             @foreach($listaPagos as $pago)
+                <th scope="row" class="text-center">{{ cerosIzquierda($pago->participantes_id, 5) }}</th>
                 <td>{{ $pago->banco }}</td>
                 <td>{{ $pago->tipo }}</td>
                 <td class="text-center">{{ fecha($pago->fecha) }}</td>
-                <td class="text-center">{{ $pago->comprobante }}</td>
+                <th scope="row" class="text-center">{{ $pago->comprobante }}</th>
                 <td class="text-right">{{ formatoMillares($pago->monto) }}</td>
                 <td class="text-center">{!! estatusPagos($pago->estatus) !!}</td>
                 <td class="justify-content-end">
@@ -34,7 +36,7 @@
             <td colspan="6">
                 <a href="{{ route('pagos.index') }}">
                     <span>
-                        Sin resultados para la busqueda <strong class="text-bold"> { <span class="text-danger">{{--{{ $busqueda }}--}}</span> }</strong>
+                        Sin resultados para la busqueda <strong class="text-bold"> { <span class="text-danger">{{ $busqueda }}</span> }</strong>
                     </span>
                 </a>
             </td>

@@ -37,6 +37,10 @@ class SearchController extends Controller
             return redirect()->route('administracion.atletas', $keyword);
         }
 
+        if (strpos($route, '/dashboard/pagos') !== false){
+            return redirect()->route('pagos.index', $keyword);
+        }
+
         //en caso de no encontrar ninguna ruta
         verSweetAlert2("Opcion no encontrada", 'toast');
         return back();
