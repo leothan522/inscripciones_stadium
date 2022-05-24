@@ -20,6 +20,9 @@
                     <div class="col-md-4">
                         @include('dashboard.usuarios.permisos.pagos')
                     </div>
+                    <div class="col-md-4">
+                        @include('dashboard.usuarios.permisos.particpantes')
+                    </div>
                 </div>
 
 

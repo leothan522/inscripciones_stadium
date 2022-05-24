@@ -1,6 +1,6 @@
 <div class="card card-gray-dark {{--collapsed-card--}}">
     <div class="card-header">
-        <h3 class="card-title">Validar Pagos</h3>
+        <h3 class="card-title">Participantes</h3>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-plus"></i>
@@ -13,21 +13,21 @@
 
         <ul class="list-group text-sm">
             <li class="list-group-item">
-                Ver Pagos
+                Ver Participantes
                 <div class="custom-control custom-switch custom-switch-on-success float-right">
-                    <input type="checkbox" wire:click="update_roles({{ $rol_id }}, 'pagos.index')"
-                           @if(leerJson($roles_permisos, 'pagos.index')) checked @endif
-                           class="custom-control-input" id="customSwitchRoles0Pag">
-                    <label class="custom-control-label" for="customSwitchRoles0Pag"></label>
+                    <input type="checkbox" wire:click="update_roles({{ $rol_id }}, 'participantes.index')"
+                           @if(leerJson($roles_permisos, 'participantes.index')) checked @endif
+                           class="custom-control-input" id="customSwitchRoles0Part">
+                    <label class="custom-control-label" for="customSwitchRoles0Part"></label>
                 </div>
             </li>
             <li class="list-group-item">
-                Validar Pagos
+                Descargar Excel
                 <div class="custom-control custom-switch custom-switch-on-success float-right">
-                    <input type="checkbox" wire:click="update_roles({{ $rol_id }}, 'pagos.validar')"
-                           @if(leerJson($roles_permisos, 'pagos.validar')) checked @endif
-                           class="custom-control-input" id="customSwitchRoles1Pagn">
-                    <label class="custom-control-label" for="customSwitchRoles1Pagn"></label>
+                    <input type="checkbox" wire:click="update_roles({{ $rol_id }}, 'participantes.excel')"
+                           @if(leerJson($roles_permisos, 'participantes.excel')) checked @endif
+                           class="custom-control-input" id="customSwitchRoles1Partn">
+                    <label class="custom-control-label" for="customSwitchRoles1Partn"></label>
                 </div>
             </li>
             {{--<li class="list-group-item">
@@ -35,15 +35,15 @@
                 <div class="custom-control custom-switch custom-switch-on-success float-right">
                     <input type="checkbox" wire:click="update_roles({{ $rol_id }}, 'eventos.destroy')"
                            @if(leerJson($roles_permisos, 'eventos.destroy')) checked @endif
-                           class="custom-control-input" id="customSwitchRoles2Pag">
-                    <label class="custom-control-label" for="customSwitchRoles2Pag"></label>
+                           class="custom-control-input" id="customSwitchRoles2Part">
+                    <label class="custom-control-label" for="customSwitchRoles2Part"></label>
                 </div>
             </li>
             <li class="list-group-item">
                 Ver Atletas
                 <div class="custom-control custom-switch custom-switch-on-success float-right">
-                    <input type="checkbox" wire:click="update_roles({{ $rol_id }}, 'Paginistracion.atletas')"
-                           @if(leerJson($roles_permisos, 'Paginistracion.atletas')) checked @endif
+                    <input type="checkbox" wire:click="update_roles({{ $rol_id }}, 'Partinistracion.atletas')"
+                           @if(leerJson($roles_permisos, 'Partinistracion.atletas')) checked @endif
                            class="custom-control-input" id="customSwitchRoles3Atl">
                     <label class="custom-control-label" for="customSwitchRoles3Atl"></label>
                 </div>
