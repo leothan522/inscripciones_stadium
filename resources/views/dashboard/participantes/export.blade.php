@@ -1,10 +1,10 @@
 <table>
     <thead>
-    <tr><td colspan="7">Evento: <strong>{{ $evento->nombre }}</strong></td></tr>
-    <tr><td colspan="7">Lugar: <strong>{{ $evento->lugar }}</strong></td></tr>
+    <tr><td colspan="7">Evento:&nbsp; <strong>{{ $evento->nombre }}</strong></td></tr>
+    <tr><td colspan="7">Lugar:&nbsp; <strong>{{ $evento->lugar }}</strong></td></tr>
     <tr>
-        <td colspan="4">Fecha: <strong>{{ fecha($evento->fecha) }}</strong></td>
-        <td colspan="3">Hora: <strong>{{ hora($evento->hora) }}</strong></td>
+        <td colspan="4">Fecha:&nbsp; <strong>{{ fecha($evento->fecha) }}</strong></td>
+        <td colspan="3">Hora:&nbsp; <strong>{{ hora($evento->hora) }}</strong></td>
     </tr>
     <tr>
         <td>&ensp;</td>
