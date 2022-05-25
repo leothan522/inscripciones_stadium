@@ -21,7 +21,7 @@
             <li class="nav-item">
                 <span class="nav-link">
                      F. Nacimiento
-                    <span class="float-right text-bold">{{ $fechaAtleta }}</span>
+                    <span class="float-right text-bold">{{ fecha($fechaAtleta) }}</span>
                 </span>
             </li>
             <li class="nav-item">

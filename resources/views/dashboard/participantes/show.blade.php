@@ -5,7 +5,7 @@
         <div class="card-tools">
             @if(leerJson(Auth::user()->permisos, 'participantes.excel') || Auth::user()->role == 1 || Auth::user()->role == 100)
                 @if($evento_id)
-                <a href="{{--{{ route('usuarios.excel') }}--}}#"
+                <a href="{{ route('participantes.excel', $evento_id) }}"
                    class="btn btn-tool text-success swalDefaultInfo" {{--target="_blank"--}}>
                     <i class="fas fa-file-excel"></i> <i class="fas fa-download"></i>
                 </a>

@@ -37,5 +37,6 @@ Route::middleware(['auth', 'isadmin', 'estatus', 'permisos'])->prefix('/dashboar
 
     Route::get('pagos/{buscar?}', [PagosController::class, 'index'])->name('pagos.index');
     Route::get('participantes', [ParticipantesController::class, 'index'])->name('participantes.index');
+    Route::get('export/participantes/{evento}', [ParticipantesController::class, 'export'])->name('participantes.excel');
 
 });
