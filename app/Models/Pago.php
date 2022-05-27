@@ -17,6 +17,7 @@ class Pago extends Model
         'monto',
         'eventos_id',
         'atletas_id',
+        'participantes_id',
         'estatus'
     ];
 

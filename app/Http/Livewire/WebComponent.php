@@ -397,7 +397,12 @@ class WebComponent extends Component
         $pago->monto = $this->monto;
         $pago->eventos_id = $this->evento_id;
         $pago->atletas_id = $this->atleta_id;
+        $pago->participantes_id = $participante->id;
         $pago->save();
+
+        $extra = Particiante::find($participante->id);
+        $extra->pagos_id = $pago->id;
+        $extra->update();
 
         $this->participante_id = $participante->id;
         $this->pago_id = $pago->id;
