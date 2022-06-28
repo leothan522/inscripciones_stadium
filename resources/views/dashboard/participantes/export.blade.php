@@ -25,6 +25,10 @@
         <th style="border: 1px solid #000000; text-align: center">Talla Franela</th>
         <th style="border: 1px solid #000000; text-align: center">Modalidad</th>
         <th style="border: 1px solid #000000; text-align: center">Estatus</th>
+        <th style="border: 1px solid #000000; text-align: center">Banco</th>
+        <th style="border: 1px solid #000000; text-align: center">Tipo</th>
+        <th style="border: 1px solid #000000; text-align: center">Fecha</th>
+        <th style="border: 1px solid #000000; text-align: center">Comprobante</th>
     </tr>
     </thead>
     <tbody>
@@ -55,6 +59,10 @@
                     @endif
                 @endif
             </td>
+            <td style="border: 1px solid #000000; text-align: center">{{ $participante->p_banco }}</td>
+            <td style="border: 1px solid #000000; text-align: center">{{ $participante->p_tipo }}</td>
+            <td style="border: 1px solid #000000; text-align: center">{{ fecha($participante->p_fecha) }}</td>
+            <td style="border: 1px solid #000000; text-align: center">{{ $participante->p_comprobante }}</td>
         </tr>
     @endforeach
     </tbody>

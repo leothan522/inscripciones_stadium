@@ -276,8 +276,8 @@ function iconoPlataforma($plataforma)
 function bancos(){
     $bancos = [
         'BANESCO' => 'BANESCO',
-        'VENEZUELA' => 'VENEZUELA',
-        'MERCANTIL' => 'MERCANTIL',
+        /*'VENEZUELA' => 'VENEZUELA',
+        'MERCANTIL' => 'MERCANTIL',*/
     ];
     return $bancos;
 

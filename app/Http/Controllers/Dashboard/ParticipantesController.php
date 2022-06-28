@@ -27,6 +27,10 @@ class ParticipantesController extends Controller
         $participantes->each(function ($participante){
             $pago = Pago::where('participantes_id', $participante->id)->first();
             $participante->estatus = $pago->estatus;
+            $participante->p_banco = $pago->banco;
+            $participante->p_tipo = $pago->tipo;
+            $participante->p_fecha = $pago->fecha;
+            $participante->p_comprobante = $pago->comprobante;
             $modalidades = Modalidad::find($participante->modalidades_id);
             $participante->modalidad = $modalidades->nombre;
             //$categorias = Categoria::where('eventos_id', $pago->evento->id)->where('modalidades_id', $pago->participante->modalidades_id)->get()
