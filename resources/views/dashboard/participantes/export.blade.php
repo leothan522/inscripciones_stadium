@@ -24,6 +24,7 @@
         <th style="border: 1px solid #000000; text-align: center">Club</th>
         <th style="border: 1px solid #000000; text-align: center">Talla Franela</th>
         <th style="border: 1px solid #000000; text-align: center">Modalidad</th>
+        <th style="border: 1px solid #000000; text-align: center">Correo</th>
         <th style="border: 1px solid #000000; text-align: center">Estatus</th>
         <th style="border: 1px solid #000000; text-align: center">Banco</th>
         <th style="border: 1px solid #000000; text-align: center">Tipo</th>
@@ -48,6 +49,7 @@
             <td style="border: 1px solid #000000; text-align: center">{{ $participante->atleta->club->nombre}}</td>
             <td style="border: 1px solid #000000; text-align: center">{{ $participante->atleta->talla_franela}}</td>
             <td style="border: 1px solid #000000; text-align: center">{{ $participante->modalidad }}</td>
+            <td style="border: 1px solid #000000; text-align: center; background-color: yellow;">{{ $participante->atleta->user->email }}</td>
             <td style="border: 1px solid #000000; text-align: center">
                 @if($participante->estatus == 0)
                         Esperando la confirmacion del Pago.
@@ -62,7 +64,7 @@
             <td style="border: 1px solid #000000; text-align: center">{{ $participante->p_banco }}</td>
             <td style="border: 1px solid #000000; text-align: center">{{ $participante->p_tipo }}</td>
             <td style="border: 1px solid #000000; text-align: center">{{ fecha($participante->p_fecha) }}</td>
-            <td style="border: 1px solid #000000; text-align: center">{{ $participante->p_comprobante }}</td>
+            <td style="border: 1px solid #000000; text-align: center; background-color: yellow;">{{ $participante->p_comprobante }}</td>
         </tr>
     @endforeach
     </tbody>
