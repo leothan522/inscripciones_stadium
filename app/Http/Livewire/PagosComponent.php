@@ -91,10 +91,10 @@ class PagosComponent extends Component
         if ($estatus == 1){
             $to = $pago->atleta->user->email;
             $cc = "inscripcioneseventosstadium@hotmail.com";
-            Mail::to($to)->send(new ConfirmacionIncripcion($pago->eventos_id, $pago->participantes_id, $pago->id));
-            Mail::to($to)->send(new Liberacion($pago->eventos_id, $pago->participantes_id));
             Mail::to($cc)->send(new ConfirmacionIncripcion($pago->eventos_id, $pago->participantes_id, $pago->id));
             Mail::to($cc)->send(new Liberacion($pago->eventos_id, $pago->participantes_id));
+            Mail::to($to)->send(new ConfirmacionIncripcion($pago->eventos_id, $pago->participantes_id, $pago->id));
+            Mail::to($to)->send(new Liberacion($pago->eventos_id, $pago->participantes_id));
         }
 
         $this->alert(

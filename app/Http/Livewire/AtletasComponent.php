@@ -69,7 +69,7 @@ class AtletasComponent extends Component
 
     public function verPlanilla($id = null)
     {
-        $atleta = Atleta::where('users_id', $id)->first();
+        $atleta = Atleta::where('id', $id)->first();
         if ($atleta){
             $this->atleta_id = $atleta->id;
             $this->cedula = $atleta->cedula;
@@ -133,7 +133,7 @@ class AtletasComponent extends Component
     {
         return [
             'cedula' => ['required', 'numeric', 'digits_between:6,8', 'integer',
-                Rule::unique('atletas', 'cedula')->ignore($this->atleta_id, 'users_id')],
+                Rule::unique('atletas', 'cedula')->ignore($this->atleta_id, 'id')],
             /*'cedula'                => 'required|numeric|digits_between:6,8|integer|unique:atletas,cedula',*/
             'sexo'                  => 'required',
             'fechaNac'              => 'required',
