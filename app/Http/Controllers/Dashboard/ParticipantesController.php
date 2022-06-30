@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Exports\EventoExport;
 use App\Http\Controllers\Controller;
+use App\Models\Categoria;
 use App\Models\Evento;
 use App\Models\Modalidad;
 use App\Models\Pago;
@@ -33,7 +34,8 @@ class ParticipantesController extends Controller
             $participante->p_comprobante = $pago->comprobante;
             $modalidades = Modalidad::find($participante->modalidades_id);
             $participante->modalidad = $modalidades->nombre;
-            //$categorias = Categoria::where('eventos_id', $pago->evento->id)->where('modalidades_id', $pago->participante->modalidades_id)->get()
+            $participante->categorias = Categoria::where('eventos_id', $pago->evento->id)->where('modalidades_id', $pago->participante->modalidades_id)->get();
+            $participante->categoriasAtleta = $pago->participante->categorias;
         });
 
         /*return view('dashboard.participantes.export')

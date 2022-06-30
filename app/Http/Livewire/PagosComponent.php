@@ -2,11 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\ConfirmacionIncripcion;
+use App\Mail\Liberacion;
 use App\Models\Categoria;
 use App\Models\Modalidad;
 use App\Models\Pago;
 use App\Models\Particiante;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -84,6 +87,15 @@ class PagosComponent extends Component
         $pago->update();
 
         $this->estatusPago = $estatus;
+
+        if ($estatus == 1){
+            $to = $pago->atleta->user->email;
+            $cc = "inscripcioneseventosstadium@hotmail.com";
+            Mail::to($to)->send(new ConfirmacionIncripcion($pago->eventos_id, $pago->participantes_id, $pago->id));
+            Mail::to($to)->send(new Liberacion($pago->eventos_id, $pago->participantes_id));
+            Mail::to($cc)->send(new ConfirmacionIncripcion($pago->eventos_id, $pago->participantes_id, $pago->id));
+            Mail::to($cc)->send(new Liberacion($pago->eventos_id, $pago->participantes_id));
+        }
 
         $this->alert(
             'success',

@@ -24,6 +24,7 @@
         <th style="border: 1px solid #000000; text-align: center">Club</th>
         <th style="border: 1px solid #000000; text-align: center">Talla Franela</th>
         <th style="border: 1px solid #000000; text-align: center">Modalidad</th>
+        <th style="border: 1px solid #000000; text-align: center">Categoria</th>
         <th style="border: 1px solid #000000; text-align: center">Correo</th>
         <th style="border: 1px solid #000000; text-align: center">Estatus</th>
         <th style="border: 1px solid #000000; text-align: center">Banco</th>
@@ -49,6 +50,15 @@
             <td style="border: 1px solid #000000; text-align: center">{{ $participante->atleta->club->nombre}}</td>
             <td style="border: 1px solid #000000; text-align: center">{{ $participante->atleta->talla_franela}}</td>
             <td style="border: 1px solid #000000; text-align: center">{{ $participante->modalidad }}</td>
+            <td style="border: 1px solid #000000; text-align: center; background-color: yellow;">
+
+                @foreach($participante->categorias as $categoria)
+                    @if(leerJson($participante->categoriasAtleta, $categoria->id))
+                        [{{ $categoria->nombre }}]
+                    @endif
+                @endforeach
+
+            </td>
             <td style="border: 1px solid #000000; text-align: center; background-color: yellow;">{{ $participante->atleta->user->email }}</td>
             <td style="border: 1px solid #000000; text-align: center">
                 @if($participante->estatus == 0)
