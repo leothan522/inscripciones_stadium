@@ -5,6 +5,7 @@
         @include('dashboard.administracion.atletas.show')
         @include('dashboard.administracion.atletas.modal_planilla')
         @include('dashboard.administracion.atletas.modal_foto')
+        @include('dashboard.administracion.atletas.modal_inscripcion')
 
     </div>
 

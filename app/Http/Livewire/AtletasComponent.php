@@ -3,7 +3,12 @@
 namespace App\Http\Livewire;
 
 use App\Models\Atleta;
+use App\Models\Categoria;
 use App\Models\Club;
+use App\Models\Evento;
+use App\Models\Modalidad;
+use App\Models\Pago;
+use App\Models\Particiante;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -11,6 +16,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
+use Livewire\Event;
 use Livewire\WithFileUploads;
 
 class AtletasComponent extends Component
@@ -25,8 +31,9 @@ class AtletasComponent extends Component
         $alergico = "NO", $alergias, $contactoEmergencia, $telefonoEmergencia, $antecedentesMedicos = "NO", $observaciones;
     public $listaClub = [], $registrarClub = false, $nombreClub, $atleta_id = null;
     public $photo, $path, $guardarFoto = false;
-    public $viewInscripcion = 'inscripcion', $evento_id, $nombreEvento, $fechaEvento, $horaVento, $horaEvento, $lugarEvento,
-        $listaModalidades = [], $modalidad, $categorias, $categoriasAtleta;
+    public $viewInscripcion = 'inscripcion', $evento, $nombreEvento, $fechaEvento, $horaVento, $horaEvento, $lugarEvento,
+        $listaModalidades = [], $modalidad, $categorias, $categoriasAtleta, $listarEvento = [], $inscribir = false;
+    public $banco, $tipoPago, $fechaPago, $comprobante, $monto, $estatusPago, $participante_id, $pago_id;
 
     public function mount(Request $request)
     {
@@ -127,6 +134,8 @@ class AtletasComponent extends Component
         $this->antecedentesMedicos = null;
         $this->observaciones = null;
         $this->registrarUsuario = true;
+        $this->evento = null;
+        $this->inscribir = false;
     }
 
     protected function rules()
@@ -320,6 +329,136 @@ class AtletasComponent extends Component
     }
 
 
+
+    public function formInscripcion($id)
+    {
+        $this->limpiar();
+        $atleta = Atleta::find($id);
+        $this->atleta_id = $atleta->id;
+        $this->cedula = $atleta->cedula;
+        $this->primerNombre = $atleta->primer_nombre;
+        $this->segundoNombre = $atleta->segundo_nombre;
+        $this->primerApellido = $atleta->primer_apellido;
+        $this->segundoApellido = $atleta->segundo_apellido;
+        $this->sexo = $atleta->sexo;
+        $this->fechaNac = $atleta->fecha_nac;
+        $club = Club::find($atleta->clubes_id);
+        $this->nombreClub = $club->nombre;
+
+        $eventos = Evento::orderBy('id', 'DESC')->pluck('nombre', 'id');
+        $this->listarEvento = $eventos;
+
+    }
+
+    public function updatedEvento()
+    {
+        if (empty($this->evento)){
+            $this->inscribir = false;
+            $this->listaModalidades = null;
+            $this->categorias = null;
+            $this->alert(
+                'info',
+                'Selecciona Evento.'
+            );
+        }else{
+            $evento = Evento::find($this->evento);
+            $participante = Particiante::where('eventos_id', $evento->id)
+                ->where('atletas_id', $this->atleta_id)
+                ->first();
+            if ($participante){
+                $this->inscribir = false;
+                $this->listaModalidades = null;
+                $this->categorias = null;
+                $this->alert(
+                    'info',
+                    'Atleta ya Inscrito.'
+                );
+            }else{
+                $this->inscribir = true;
+                $this->listaModalidades = Modalidad::where('eventos_id', $evento->id)->pluck('nombre', 'id');
+                $this->categorias = null;
+            }
+        }
+    }
+
+    public function updatedmodalidad()
+    {
+        if($this->modalidad){
+            $this->categorias = Categoria::where('modalidades_id', $this->modalidad)->get();
+        }else{
+            $this->categorias = null;
+            $this->categoriasAtleta = null;
+        }
+    }
+
+    public function categoriasParticipante($categoria)
+    {
+        $categorias = [];
+        if (!leerJson($this->categoriasAtleta, $categoria)){
+            $categorias = json_decode($this->categoriasAtleta, true);
+            $categorias[$categoria] = true;
+            $categorias = json_encode($categorias);
+        }else{
+            $categorias = json_decode($this->categoriasAtleta, true);
+            unset($categorias[$categoria]);
+            $categorias = json_encode($categorias);
+        }
+        $this->categoriasAtleta = $categorias;
+    }
+
+    protected $rulesInscripcion = [
+        'modalidad'     =>      'required',
+        'banco'         =>      'required',
+        'tipoPago'      =>      'required',
+        'fechaPago'     =>      'required',
+        'comprobante'   =>      'required|regex:/[0-9]/|digits_between:6,8',
+        'monto'         =>      'required|numeric|regex:/^[\d]{0,11}(\.[\d]{1,2})?$/',
+        'categoriasAtleta' =>   'required'
+    ];
+
+    protected $messagesInscripcion = [
+        'categoriasAtleta.required' => 'Se debe elegir al menos una categoria.'
+    ];
+
+    public function storeIncripcion()
+    {
+
+        $this->validate($this->rulesInscripcion, $this->messagesInscripcion);
+
+        $participante = new Particiante();
+        $participante->eventos_id = $this->evento;
+        $participante->modalidades_id = $this->modalidad;
+        $participante->atletas_id = $this->atleta_id;
+        $participante->categorias = $this->categoriasAtleta;
+        $participante->save();
+
+        $pago = new Pago();
+        $pago->comprobante = $this->comprobante;
+        $pago->banco = $this->banco;
+        $pago->tipo = $this->tipoPago;
+        $pago->fecha = $this->fechaPago;
+        $pago->monto = $this->monto;
+        $pago->eventos_id = $this->evento;
+        $pago->atletas_id = $this->atleta_id;
+        $pago->participantes_id = $participante->id;
+        $pago->save();
+
+        $extra = Particiante::find($participante->id);
+        $extra->pagos_id = $pago->id;
+        $extra->update();
+
+        $this->participante_id = $participante->id;
+        $this->pago_id = $pago->id;
+        $this->estatusPago = 0;
+
+        $this->formInscripcion($this->atleta_id);
+
+        $this->alert(
+            'success',
+            'Atleta Inscrito.'
+        );
+
+    }
 
 
 }

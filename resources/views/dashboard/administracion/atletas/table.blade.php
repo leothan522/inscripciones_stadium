@@ -29,6 +29,12 @@
                         <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-lg-foto" wire:click="verFoto({{ $atleta->id }})">
                             <i class="fas fa-image"></i>
                         </button>
+
+                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-lg-inscripcion" wire:click="formInscripcion({{ $atleta->id }})">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+
+
                 </div>
                 </td>
                 </tr>
